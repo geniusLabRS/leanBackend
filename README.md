@@ -1,5 +1,4 @@
-<h1># boilerplateGraphql</h1> 
-Level: Intermediate
+<h1># Lean Backend</h1> 
 
 </br></br>
 
