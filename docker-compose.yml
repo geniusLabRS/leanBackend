@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  leanapi:
+    image: nodelean
+    container_name: leanapi
+    build: 
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8080:3000"
+    expose:
+      - "8080"
+    volumes:
+      - leanapi:/home/node/app
+    networks:
+      - lean-network
+    command: "npm run dev"
+
+networks: 
+  lean-network:
+
+volumes:
+  leanapi:
