@@ -8,6 +8,8 @@ COPY . /app
 RUN pwd
 RUN ls -la
 RUN npm install
+RUN npm run build
+RUN npm run dev
 # RUN npm run gulp
 
 
