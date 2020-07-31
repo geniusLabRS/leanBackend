@@ -17,6 +17,7 @@ export class UserLoader {
             where: { id: { [Op.in]: ids } },
             attributes: requestedFields.getFields(params[0].info, {
               keep: ['id'],
+              exclude: ['password'],
             }),
           }),
         )

@@ -3,7 +3,7 @@ const userTypes = `
         id: ID!
         username: String!
         email: String!
-        password: String!
+        password: String
         createdAt: String!
         updatedAt: String!
     }
