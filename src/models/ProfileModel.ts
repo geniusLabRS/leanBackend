@@ -6,6 +6,7 @@ export interface ProfileAttributes {
 
     id?: number;
     name?: string;
+    biography?: string;
     fk_user?:number;
     createdAt?: string;
     updateAt?: string;
@@ -28,6 +29,10 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
         name:{
             type: DataTypes.STRING(50),
             allowNull: false
+        },
+        biography:{
+            type: DataTypes.STRING(512),
+            allowNull: true
         }
     },
     {

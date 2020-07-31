@@ -2,6 +2,7 @@ const profileTypes = `
     type Profile {
         id: ID!
         name: String!
+        biography: String
         createdAt: String!
         updatedAt: String!
         fk_user: User!
@@ -9,6 +10,7 @@ const profileTypes = `
 
     input ProfileUpdateInput {
         name: String!
+        biography: String!
     }
 `;
 
