@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "zxcv",
-    "database": "graphql1_development",
-    "host": "127.0.0.1",
+    "username": "masterUsername",
+    "password": "g73hi3scalene",
+    "database": "leanDatabase",
+    "host": "rds-postgresql.cv9uioqjibco.sa-east-1.rds.amazonaws.com",
     "dialect": "postgres"
   },
   "test": {
