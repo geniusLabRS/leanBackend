@@ -230,8 +230,154 @@
 								"body": {
 									"mode": "graphql",
 									"graphql": {
-										"query": "mutation updateExistingProfile($input: ProfileUpdateInput!) {\n    updateCurrentProfile(input: $input) {\n        name\n        fk_user{\n            id\n            username\n            email\n        }\n    }\n}",
-										"variables": "{\n\t\"input\": {\n\t\t\"name\": \"new name\"\n\t}\n}"
+										"query": "mutation updateExistingProfile($input: ProfileUpdateInput!) {\n    updateCurrentProfile(input: $input) {\n        name\n        biography\n        fk_user{\n            id\n            username\n            email\n            password\n        }\n    }\n}",
+										"variables": "{\n\t\"input\": {\n\t\t\"name\": \"new name\",\n\t\t\"biography\": \"new biography\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "Interest",
+			"item": [
+				{
+					"name": "Query",
+					"item": [
+						{
+							"name": "interests",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n    interests{\n        id\n        label\n        createdAt\n        updatedAt\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "interest",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query oneInterest($id: ID!) {\n    interest(id: $id) {\n        label\n    }\n}",
+										"variables": "{\n\t\"id\": \"1\"\n}"
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Mutation",
+					"item": [
+						{
+							"name": "createInterest",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation createNewInterest($input: InterestCreateInput!) {\n    createInterest(input: $input) {\n        id\n        label\n    }\n}",
+										"variables": "{\n\t\"input\": {\n\t\t\"label\": \"Label 1\"\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateInterest",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation updateExistingInterest($id: ID!, $input: InterestUpdateInput!) {\n    updateInterest(id: $id, input: $input) {\n        label\n    }\n}",
+										"variables": "{\n\t\"id\": \"1\",\n\t\"input\": {\n\t\t\"label\": null\n\t}\n}"
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}",
+									"host": [
+										"{{base_url}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCurrentUser",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation {\n    deleteCurrentUser\n}",
+										"variables": ""
 									}
 								},
 								"url": {
@@ -283,7 +429,7 @@
 	],
 	"variable": [
 		{
-			"id": "e6d4d747-f853-4990-ab03-f764f8efabe4",
+			"id": "82013be6-eda0-4720-adab-6a4ed7461f15",
 			"key": "base_url",
 			"value": "http://localhost:3000/graphql",
 			"type": "string"
