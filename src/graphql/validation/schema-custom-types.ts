@@ -52,9 +52,15 @@ class CustomTypes {
 
     profileName = {
         validation: yup.string()
-            .required(schemaMessagesInstance.profile.name.required)
+            .nullable()
             .min(1, schemaMessagesInstance.profile.name.min)
             .max(64, schemaMessagesInstance.profile.name.max)
+    }
+    profileBiography = {
+        validation: yup.string()
+            .nullable()
+            .min(1, schemaMessagesInstance.profile.biography.min)
+            .max(30, schemaMessagesInstance.profile.biography.max)
     }
 
     //#endregion
@@ -70,168 +76,18 @@ class CustomTypes {
 
     //#endregion
 
+    //#region -- Interest --
+
+    interestLabel = {
+        validation: yup.string()
+            .required(schemaMessagesInstance.interest.label.required)
+            .min(1, schemaMessagesInstance.interest.label.min)
+            .max(30, schemaMessagesInstance.interest.label.max)
+    }
+
+    //#endregion
 }
 
 const customTypesInstance: CustomTypes = new CustomTypes();
 Object.freeze(customTypesInstance);
 export default customTypesInstance;
-
-
-
-
-
-
-
-
-// import * as yup from 'yup';
-// import {
-//     defaulted,
-//     profile,
-//     template
-// } from '../validation/schema-messages';
-
-
-// //#region -- Default --
-
-// const id = {
-//     validation: yup.string()
-//         .required(defaulted.id.required)
-//         .min(1, defaulted.id.min)
-//         .max(24, defaulted.id.max)
-// }
-// const email = {
-//     validation: yup.string()
-//         .required(defaulted.email.required)
-//         .min(6, defaulted.email.min)
-//         .max(64, defaulted.email.max)
-//         .email(defaulted.email.email)
-// }
-// const username = {
-//     validation: yup.string()
-//         .required(defaulted.username.required)
-//         .min(6, defaulted.username.min)
-//         .max(32, defaulted.username.max)
-//         .matches(/^[a-zA-Z0-9]*$/, defaulted.username.alphanum)
-// }
-// const password = {
-//     validation: yup.string()
-//         .required(defaulted.password.required)
-//         .min(6, defaulted.password.min)
-//         .max(12, defaulted.password.max)
-// }
-// const login = {
-//     validation: yup.string()
-//         .required(defaulted.login.required)
-//         .min(6, defaulted.login.min)
-//         .max(64, defaulted.login.max)
-// }
-
-// //#endregion
-
-// //#region -- Profile --
-
-// const profileName = {
-//     validation: yup.string()
-//         .required(profile.name.required)
-//         .min(1, profile.name.min)
-//         .max(64, profile.name.max)
-// }
-
-// //#endregion
-
-// //#region -- Template --
-
-// const templateDescription = {
-//     validation: yup.string()
-//         .required(template.description.required)
-//         .min(1, template.description.min)
-//         .max(512, template.description.max)
-// }
-
-// //#endregion
-
-// export {
-//     email,
-//     username,
-//     password,
-//     login,
-//     id,
-//     profileName,
-//     templateDescription
-// };
-
-
-
-
-// import * as yup from 'yup';
-// import instance from '../validation/schema-messages';
-
-
-// //#region -- Default --
-
-// const id = {
-//     validation: yup.string()
-//         .required(instance.defaulted.id.required)
-//         .min(1, instance.defaulted.id.min)
-//         .max(24, instance.defaulted.id.max)
-// }
-// const email = {
-//     validation: yup.string()
-//         .required(instance.defaulted.email.required)
-//         .min(6, instance.defaulted.email.min)
-//         .max(64, instance.defaulted.email.max)
-//         .email(instance.defaulted.email.email)
-// }
-// const username = {
-//     validation: yup.string()
-//         .required(instance.defaulted.username.required)
-//         .min(6, instance.defaulted.username.min)
-//         .max(32, instance.defaulted.username.max)
-//         .matches(/^[a-zA-Z0-9]*$/, instance.defaulted.username.alphanum)
-// }
-// const password = {
-//     validation: yup.string()
-//         .required(instance.defaulted.password.required)
-//         .min(6, instance.defaulted.password.min)
-//         .max(12, instance.defaulted.password.max)
-// }
-// const login = {
-//     validation: yup.string()
-//         .required(instance.defaulted.login.required)
-//         .min(6, instance.defaulted.login.min)
-//         .max(64, instance.defaulted.login.max)
-// }
-
-// //#endregion
-
-// //#region -- Profile --
-
-// const profileName = {
-//     validation: yup.string()
-//         .required(instance.profile.name.required)
-//         .min(1, instance.profile.name.min)
-//         .max(64, instance.profile.name.max)
-// }
-
-// //#endregion
-
-// //#region -- Template --
-
-// const templateDescription = {
-//     validation: yup.string()
-//         .required(instance.template.description.required)
-//         .min(1, instance.template.description.min)
-//         .max(512, instance.template.description.max)
-// }
-
-// //#endregion
-
-// export {
-//     email,
-//     username,
-//     password,
-//     login,
-//     id,
-//     profileName,
-//     templateDescription
-// };

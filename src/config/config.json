@@ -1,10 +1,18 @@
 {
-  "development": {
+  "development_extern": {
     "username": "masterUsername",
     "password": "g73hi3scalene",
     "database": "leanDatabase",
     "host": "rds-postgresql.cv9uioqjibco.sa-east-1.rds.amazonaws.com",
     "dialect": "postgres"
+  },
+  "development": {
+    "username": "postgres",
+    "password": "zxcv",
+    "database": "graphql1_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": true
   },
   "test": {
     "username": "postgres",

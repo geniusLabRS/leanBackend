@@ -5,7 +5,7 @@ import db from './models';
 const port =   3000;
 const server = http.createServer(app);
 
-db.sequelize.sync({ force: false })
+db.sequelize.sync({ force: true })
     .then(() => {
         server.listen(port, () => {
             console.log(`listening on port ${port}`);

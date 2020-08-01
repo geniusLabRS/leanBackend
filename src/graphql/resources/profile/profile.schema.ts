@@ -1,7 +1,7 @@
 const profileTypes = `
     type Profile {
         id: ID!
-        name: String!
+        name: String
         biography: String
         createdAt: String!
         updatedAt: String!
@@ -9,8 +9,8 @@ const profileTypes = `
     }
 
     input ProfileUpdateInput {
-        name: String!
-        biography: String!
+        name: String
+        biography: String
     }
 `;
 

@@ -3,7 +3,6 @@ import { BaseModelInterface } from '../interfaces/BaseModelInterface';
 import { ModelsInterface } from '../interfaces/ModelsInterface';
 
 export interface ProfileAttributes {
-
     id?: number;
     name?: string;
     biography?: string;
@@ -28,7 +27,7 @@ export default (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes):
         },
         name:{
             type: DataTypes.STRING(50),
-            allowNull: false
+            allowNull: true
         },
         biography:{
             type: DataTypes.STRING(512),

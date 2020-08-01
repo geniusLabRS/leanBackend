@@ -14,6 +14,7 @@ const handleError = error => {
 
 const destroyAll = () => {
     return db.Template.destroy({ where: {} })
+        .then(() => db.Interest.destroy({ where: {} }))
         .then(() => db.Profile.destroy({ where: {} }))
         .then(() => db.User.destroy({ where: {} }))
 }
