@@ -53,6 +53,5 @@ export const profileResolvers = {
                     });
             }).catch(handleError);
         }),
-
     }
 };

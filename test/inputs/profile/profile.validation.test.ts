@@ -85,9 +85,7 @@ describe('Profile - Fields Validations', () => {
                     expect(res.body.data.updateCurrentProfile).to.be.null;
                     expect(res.body.errors).to.be.an('array').with.length(1);
                     expect(errors.message[0].fieldNameError).to.be.equal('name');
-                    expect(errors.message[0].fieldMessageError).to.be.equal('O campo nome não pode estar vazio.');
-                    expect(errors.message[1].fieldNameError).to.be.equal('name');
-                    expect(errors.message[1].fieldMessageError).to.be.equal('O campo nome não atinge o tamanho mínimo de 1 caracteres.');
+                    expect(errors.message[0].fieldMessageError).to.be.equal('O campo nome não atinge o tamanho mínimo de 1 caracteres.');
                 }).catch(handleError);
         });
 
@@ -129,20 +127,27 @@ describe('Profile - Fields Validations', () => {
 
         //#endregion
 
-        //#region -- Should return an error, trying to update Profile sending null Name --
+    });
+    //#endregion
 
-        it('Should return an error, trying to update Profile sending null Name', () => {
+    //#region -- name --
+    describe('name', () => {
+
+        //#region -- Should return errors, tryng to update Profile with empty Biography --
+
+        it('Should return errors, tryng to update Profile with empty Biography', () => {
+
             let body = {
                 query: `
                     mutation updateExistingProfile($input: ProfileUpdateInput!) {
                         updateCurrentProfile(input: $input) {
-                            name
+                            biography
                         }
                     }
                 `,
                 variables: {
                     input: {
-                        name: null
+                        biography: '',
                     }
                 }
             };
@@ -153,10 +158,49 @@ describe('Profile - Fields Validations', () => {
                 .set('authorization', `Bearer ${token}`)
                 .send(JSON.stringify(body))
                 .then(res => {
-                    const errors = res.body.errors;
-                    expect(res.body).to.have.keys(['errors']);
-                    expect(errors).to.be.an('array');
-                    expect(errors[0].message).to.contains(`Variable "$input" got invalid value`);
+                    const errors = res.body.errors[0];
+                    expect(res.body).to.have.keys(['data', 'errors']);
+                    expect(res.body.data).to.be.key('updateCurrentProfile');
+                    expect(res.body.data.updateCurrentProfile).to.be.null;
+                    expect(res.body.errors).to.be.an('array').with.length(1);
+                    expect(errors.message[0].fieldNameError).to.be.equal('biography');
+                    expect(errors.message[0].fieldMessageError).to.be.equal('O campo biografia não atinge o tamanho mínimo de 1 caracteres.');
+                }).catch(handleError);
+        });
+
+        //#endregion
+
+        //#region -- Should return an error, tryng to update Profile with long Biography --
+
+        it('Should return an error, tryng to update Profile with long name', () => {
+            let body = {
+                query: `
+                    mutation updateExistingProfile($input: ProfileUpdateInput!) {
+                        updateCurrentProfile(input: $input) {
+                            biography
+                        }
+                    }
+                `,
+                variables: {
+                    input: {
+                        biography: 'biographybiographybiographybiographybiographybiographybiographybiographybiography',
+                    }
+                }
+            };
+
+            return chai.request(app)
+                .post('/graphql')
+                .set('content-type', 'application/json')
+                .set('authorization', `Bearer ${token}`)
+                .send(JSON.stringify(body))
+                .then(res => {
+                    const errors = res.body.errors[0];
+                    expect(res.body).to.have.keys(['data', 'errors']);
+                    expect(res.body.data).to.be.key('updateCurrentProfile');
+                    expect(res.body.data.updateCurrentProfile).to.be.null;
+                    expect(res.body.errors).to.be.an('array').with.length(1);
+                    expect(errors.message[0].fieldNameError).to.be.equal('biography');
+                    expect(errors.message[0].fieldMessageError).to.be.equal('O campo biografia excede o tamanho limite de 30 caracteres.');
                 }).catch(handleError);
         });
 

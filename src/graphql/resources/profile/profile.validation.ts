@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-
 import customTypesInstance from '../../validation/schema-custom-types'
 
 export default {
@@ -7,6 +6,7 @@ export default {
         schema: yup.object().shape({
             input: yup.object({
                 name: customTypesInstance.profileName.validation,
+                biography: customTypesInstance.profileBiography.validation,
             })
         })
     },
