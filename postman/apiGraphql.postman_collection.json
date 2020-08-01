@@ -350,7 +350,7 @@
 									"mode": "graphql",
 									"graphql": {
 										"query": "mutation updateExistingInterest($id: ID!, $input: InterestUpdateInput!) {\n    updateInterest(id: $id, input: $input) {\n        label\n    }\n}",
-										"variables": "{\n\t\"id\": \"1\",\n\t\"input\": {\n\t\t\"label\": null\n\t}\n}"
+										"variables": "{\n\t\"id\": \"1\",\n\t\"input\": {\n\t\t\"label\": \"updeted interesse\"\n\t}\n}"
 									}
 								},
 								"url": {
@@ -363,7 +363,7 @@
 							"response": []
 						},
 						{
-							"name": "deleteCurrentUser",
+							"name": "deleteInterest",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -376,8 +376,8 @@
 								"body": {
 									"mode": "graphql",
 									"graphql": {
-										"query": "mutation {\n    deleteCurrentUser\n}",
-										"variables": ""
+										"query": "mutation deleteExistingInterest($id: ID!) {\n    deleteInterest(id: $id) \n}",
+										"variables": "{\n\t\"id\": 1\n}"
 									}
 								},
 								"url": {
@@ -429,7 +429,7 @@
 	],
 	"variable": [
 		{
-			"id": "82013be6-eda0-4720-adab-6a4ed7461f15",
+			"id": "cf24d705-1b79-44a3-ae16-5c85ecc1b498",
 			"key": "base_url",
 			"value": "http://localhost:3000/graphql",
 			"type": "string"
