@@ -35,7 +35,7 @@
     "@types/yup": "^0.26.30",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-typescript": "3.2.2",
     "lodash": "^4.17.19",
