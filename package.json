@@ -39,7 +39,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-typescript": "3.2.2",
     "lodash": "^4.17.19",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0",
     "ts-node": "3.3.0",
